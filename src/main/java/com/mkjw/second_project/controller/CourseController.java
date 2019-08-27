@@ -26,12 +26,32 @@ public class CourseController {
 
     @PostMapping("/courses/register")
     public HttpStatus registerCourse(@RequestParam("course_id") String course_id, @RequestParam("student_id") String student_id) {
-        logger.error("course_id : " + course_id + " user_id : " + student_id);
+        logger.error("course_id : " + course_id + " student_id : " + student_id);
         TakeRelationship relationship = new TakeRelationship();
         relationship.setCourse_id(course_id);
         relationship.setStudent_id(student_id);
 
         takeRelationshipRepository.save(relationship);
         return HttpStatus.OK;
+    }
+
+    @PostMapping("/courses/unregister")
+    public boolean unregisterCourse(@RequestParam("course_id") String course_id, @RequestParam("student_id") String student_id) {
+        logger.error("course_id : " + course_id + " student_id: " + student_id);
+        TakeRelationshipId relationshipId = new TakeRelationshipId(course_id, student_id);
+
+        if (!takeRelationshipRepository.findById(relationshipId).isPresent()) {
+            // if not exist
+            return false;
+        }
+
+        takeRelationshipRepository.deleteById(relationshipId);
+        return true;
+    }
+
+    @PostMapping("/courses/check")
+    public boolean checkRegistration(@RequestParam("course_id") String course_id, @RequestParam("student_id") String student_id) {
+        TakeRelationshipId relationshipId = new TakeRelationshipId(course_id, student_id);
+        return takeRelationshipRepository.findById(relationshipId).isPresent();
     }
 }
