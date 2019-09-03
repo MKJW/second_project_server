@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <title th:text="#{label.form.title}">form</title>
+    </head>
+    <body class="container">
+        <h1 th:text="#{label.form.title}">Form</h1>
+        <br/>
+        <form action="/user/registration" method="POST" enctype="utf8">
+            <div>
+                <label th:text="#{label.user.firstName}">first</label>
+                <span><input name="firstName" value="" required="required" /></span>
+            </div>
+            <div>
+                <label th:text="#{label.user.lastName}">last</label>
+                <span><input name="lastName" value="" required="required" /></span>
+            </div>
+            <div>
+                <label th:text="#{label.user.email}">email</label>
+                <span><input name="email" value="" required="required" /></span>
+            </div>
+            <div>
+                <label th:text="#{label.user.password}">password</label>
+                <span><input name="password" value="" type="password" required="required" /></span>
+            </div>
+            <div>
+                <label th:text="#{label.user.confirmPass}">confirm</label>
+                <span><input name="matchingPassword" value="" type="password" required="required" /></span>
+            </div>
+            <br />
+            <button type="submit" th:text="#{label.form.submit}">submit</button>
+        </form>
+        <br />
+        <a th:href="@{/login}" th:text="#{label.form.loginLink}">Login</a>
+    </body>
+</html>

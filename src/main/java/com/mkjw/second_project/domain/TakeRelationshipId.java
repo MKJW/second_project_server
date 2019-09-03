@@ -12,7 +12,7 @@ public class TakeRelationshipId implements Serializable {
 
     private String course_id;
 
-    public TakeRelationshipId(String student_id, String course_id) {
+    public TakeRelationshipId(String course_id, String student_id) {
         this.student_id = student_id;
         this.course_id = course_id;
     }

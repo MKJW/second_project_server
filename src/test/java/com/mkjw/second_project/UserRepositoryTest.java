@@ -1,7 +1,7 @@
 package com.mkjw.second_project;
 
-import com.mkjw.second_project.domain.User;
-import com.mkjw.second_project.domain.UserRepository;
+import com.mkjw.second_project.persistence.User;
+import com.mkjw.second_project.persistence.UserRepository;
 import org.hamcrest.core.Is;
 import org.junit.After;
 import org.junit.Assert;

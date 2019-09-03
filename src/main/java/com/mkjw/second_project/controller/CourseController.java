@@ -49,7 +49,7 @@ public class CourseController {
         return true;
     }
 
-    @PostMapping("/courses/check")
+    @GetMapping("/courses/check")
     public boolean checkRegistration(@RequestParam("course_id") String course_id, @RequestParam("student_id") String student_id) {
         TakeRelationshipId relationshipId = new TakeRelationshipId(course_id, student_id);
         return takeRelationshipRepository.findById(relationshipId).isPresent();
