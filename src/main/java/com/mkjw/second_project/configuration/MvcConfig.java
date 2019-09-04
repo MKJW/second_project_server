@@ -1,9 +1,12 @@
 package com.mkjw.second_project.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -13,10 +16,42 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import java.util.Locale;
+import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
+@PropertySource("classpath:email.properties")
 public class MvcConfig implements WebMvcConfigurer {
+
+    @Value("${host}")
+    private String host;
+
+    @Value("${port}")
+    private int port;
+
+    @Value("${username}")
+    private String username;
+
+    @Value("${password}")
+    private String password;
+
+    @Value("${protocol}")
+    private String protocol;
+
+    @Value("${transport.protocol}")
+    private String transportProtocol;
+
+    @Value("${auth}")
+    private String auth;
+
+    @Value("${starttls.enable}")
+    private String tlsEnabled;
+
+    @Value("${debug}")
+    private String debug;
+
+    @Value("${timeout}")
+    private String timeout;
 
     public MvcConfig() {
         super();
@@ -59,8 +94,18 @@ public class MvcConfig implements WebMvcConfigurer {
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
+        mailSender.setHost(host);
+        mailSender.setPort(port);
+        mailSender.setProtocol(protocol);
+        mailSender.setUsername(username);
+        mailSender.setPassword(password);
+
+        Properties properties = mailSender.getJavaMailProperties();
+        properties.put("mail.transport.protocol", transportProtocol);
+        properties.put("mail.smtps.auth", auth);
+        properties.put("mail.smtps.starttls.enable", tlsEnabled);
+        properties.put("mail.debug", debug);
+        properties.put("mail.smtps.timout", timeout);
 
         return mailSender;
     }
