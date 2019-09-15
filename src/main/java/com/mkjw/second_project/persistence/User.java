@@ -24,6 +24,8 @@ public class User {
     @Column(length = 60)
     private String password;
 
+    //During account verification process --> false
+    //If success this process --> true
     @Column(name = "enabled")
     private boolean enabled;
 

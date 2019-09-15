@@ -3,6 +3,8 @@ package com.mkjw.second_project.user;
 import com.mkjw.second_project.exception.UserAlreadyExistException;
 import com.mkjw.second_project.persistence.User;
 import com.mkjw.second_project.persistence.UserRepository;
+import com.mkjw.second_project.persistence.VerificationTokenRepository;
+import com.mkjw.second_project.token.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +14,9 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
 
     @Transactional
     @Override
@@ -29,6 +34,22 @@ public class UserService implements IUserService {
         user.setEmail(accountDto.getEmail());
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public void saveRegisteredUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public void createVerificationToken(User user, String token) {
+        VerificationToken verificationToken = new VerificationToken();
+        tokenRepository.save(verificationToken);
+    }
+
+    @Override
+    public VerificationToken getVerificationToken(String verificationToken) {
+        return tokenRepository.findByToken(verificationToken);
     }
 
     private boolean emailExists(String email) {

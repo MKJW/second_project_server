@@ -1,6 +1,7 @@
 package com.mkjw.second_project.controller;
 
 import com.mkjw.second_project.registration.OnRegistrationCompleteEvent;
+import com.mkjw.second_project.token.VerificationToken;
 import com.mkjw.second_project.user.IUserService;
 import com.mkjw.second_project.persistence.User;
 import com.mkjw.second_project.user.UserDto;
@@ -15,10 +16,14 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Calendar;
+import java.util.Locale;
 
 @Controller
 public class RegistrationController {
@@ -62,6 +67,36 @@ public class RegistrationController {
         }
 
         return new ModelAndView("successRegister", "user", userDto);
+    }
+
+    @RequestMapping(value = "/registrationConfirm", method = RequestMethod.GET)
+    public String confirmRegistration(WebRequest request, Model model, @RequestParam("token") String token) {
+
+        Locale locale = request.getLocale();
+
+        VerificationToken verificationToken = userService.getVerificationToken(token);
+
+        if (verificationToken == null) {
+            String message = "verificationToken is not found";
+            model.addAttribute("message", message);
+
+            return "redirect:/baduser.html?lang=" + locale.getLanguage();
+        }
+
+        User user = verificationToken.getUser();
+        Calendar cal = Calendar.getInstance();
+
+        if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
+            String messageValue = "verificationToken is expired";
+            model.addAttribute("message", messageValue);
+
+            return "redirect:/badUser.html?lang=" + locale.getLanguage();
+        }
+
+        user.setEnabled(true);
+        userService.saveRegisteredUser(user);
+
+        return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
     }
 
 }

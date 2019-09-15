@@ -2,6 +2,7 @@ package com.mkjw.second_project.registration.listener;
 
 import com.mkjw.second_project.persistence.User;
 import com.mkjw.second_project.registration.OnRegistrationCompleteEvent;
+import com.mkjw.second_project.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
@@ -15,7 +16,10 @@ import java.util.UUID;
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
 
     @Autowired
-    private MessageSource messages;
+    private IUserService userService;
+
+    @Autowired
+    private MessageSource messageSource;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -25,16 +29,16 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         this.confirmRegistration(event);
     }
 
-    private void confirmRegistration(final OnRegistrationCompleteEvent event) {
-        final User user = event.getUser();
-        final String token = UUID.randomUUID().toString();
+    private void confirmRegistration(OnRegistrationCompleteEvent event) {
+        User user = event.getUser();
+        String token = UUID.randomUUID().toString();
 
-        //create token
+        //create User Token
 
         String recipientAddress = user.getEmail();
         String subject = "Registration Confirmation";
         String confirmationUrl = event.getAppUrl() + "/registrationConfirm.html?token=" + token;
-        String message = messages.getMessage("message.regSucc", null, event.getLocale());
+        String message = messageSource.getMessage("message.regSucc", null, event.getLocale());
 
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);

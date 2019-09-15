@@ -34,13 +34,25 @@ public class MyUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        boolean accountNonExpired = true;
+        boolean credentialsNonExpired = true;
+        boolean accountNonLocked = true;
+
         User user = userRepository.findByEmail(email);
 
         if (user == null) {
             throw new UsernameNotFoundException("No user found with username: " + email);
         }
 
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword().toLowerCase(), getAuthorities(user.getRoles()));
+        return new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                user.getPassword().toLowerCase(),
+                user.isEnabled(),
+                accountNonExpired,
+                credentialsNonExpired,
+                accountNonLocked,
+                getAuthorities(user.getRoles()));
     }
 
     private final Collection<? extends GrantedAuthority> getAuthorities(final Collection<Role> roles) {

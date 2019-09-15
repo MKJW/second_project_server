@@ -1,10 +1,12 @@
 package com.mkjw.second_project.registration;
 
 import com.mkjw.second_project.persistence.User;
+import lombok.Data;
 import org.springframework.context.ApplicationEvent;
 
 import java.util.Locale;
 
+@Data
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
 
     private final String appUrl;
@@ -19,15 +21,4 @@ public class OnRegistrationCompleteEvent extends ApplicationEvent {
         this.appUrl = appUrl;
     }
 
-    public String getAppUrl() {
-        return appUrl;
-    }
-
-    public Locale getLocale() {
-        return locale;
-    }
-
-    public User getUser() {
-        return user;
-    }
 }
