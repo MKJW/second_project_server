@@ -34,6 +34,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         String token = UUID.randomUUID().toString();
 
         //create User Token
+        userService.createVerificationToken(user, token);
 
         String recipientAddress = user.getEmail();
         String subject = "Registration Confirmation";

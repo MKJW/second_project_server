@@ -32,4 +32,30 @@ public class VerificationToken {
 
         return new Date(calendar.getTime().getTime());
     }
+
+    public VerificationToken() {
+        super();
+    }
+
+    public VerificationToken(final String token) {
+        super();
+
+        this.token = token;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+    }
+
+    public VerificationToken(final String token, final User user) {
+        super();
+
+        this.token = token;
+        this.user = user;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Token [String=").append(token).append("]").append("[Expires").append(expiryDate).append("]");
+        return builder.toString();
+    }
 }

@@ -80,7 +80,7 @@ public class RegistrationController {
             String message = "verificationToken is not found";
             model.addAttribute("message", message);
 
-            return "redirect:/baduser.html?lang=" + locale.getLanguage();
+            return "redirect:/badUser.html?lang=" + locale.getLanguage();
         }
 
         User user = verificationToken.getUser();

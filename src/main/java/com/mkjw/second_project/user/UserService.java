@@ -43,7 +43,7 @@ public class UserService implements IUserService {
 
     @Override
     public void createVerificationToken(User user, String token) {
-        VerificationToken verificationToken = new VerificationToken();
+        VerificationToken verificationToken = new VerificationToken(token, user);
         tokenRepository.save(verificationToken);
     }
 
