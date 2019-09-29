@@ -13,4 +13,5 @@ public interface IUserService {
 
     VerificationToken getVerificationToken(String verificationToken);
 
+    boolean emailExists(String email);
 }

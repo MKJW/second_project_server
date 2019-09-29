@@ -52,7 +52,7 @@ public class UserService implements IUserService {
         return tokenRepository.findByToken(verificationToken);
     }
 
-    private boolean emailExists(String email) {
+    public boolean emailExists(String email) {
         return userRepository.findByEmail(email) != null;
     }
 

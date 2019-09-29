@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,8 +41,14 @@ public class RegistrationController {
         return "registration";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/user/email/exists", method = RequestMethod.GET)
+    public boolean checkEmailExists(final HttpServletRequest request, @RequestParam("email") String email) {
+        return userService.emailExists(email);
+    }
+
     @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid final UserDto userDto, BindingResult result, final HttpServletRequest request, Errors errors) {
+    public ModelAndView registerUserAccount(@ModelAttribute @Valid final UserDto userDto, BindingResult result, final HttpServletRequest request, Errors errors) {
 
         if (result.hasErrors()) {
             return new ModelAndView("registration", "user", userDto);

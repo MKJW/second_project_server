@@ -24,3 +24,10 @@
 
 
 # School_Network server
+## 개발환경
+> Intellij
+## 개발언어
+> Java8
+## 사용 라이브러리
+> Spring boot, JPA, thymeleaf
+# Server Architecture
