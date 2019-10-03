@@ -6,10 +6,12 @@ import com.mkjw.second_project.persistence.UserRepository;
 import com.mkjw.second_project.persistence.VerificationTokenRepository;
 import com.mkjw.second_project.token.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UserService implements IUserService {
 
     @Autowired
@@ -18,7 +20,9 @@ public class UserService implements IUserService {
     @Autowired
     private VerificationTokenRepository tokenRepository;
 
-    @Transactional
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public User registerNewUserAccount(UserDto accountDto) throws UserAlreadyExistException {
 
@@ -30,7 +34,7 @@ public class UserService implements IUserService {
 
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
-        user.setPassword(accountDto.getPassword());
+        user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
 
         return userRepository.save(user);
