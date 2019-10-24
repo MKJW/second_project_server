@@ -31,6 +31,9 @@ public class PushNotificationService {
         try {
             PushNotificationRequest request = new PushNotificationRequest("title", "message", "topic");
             request.setToken(token);
+            request.setTitle("Title");
+            request.setMessage("This is Description");
+            request.setTopic("topic");
             fcmService.sendMessageToToken(request);
         } catch (ExecutionException | InterruptedException e) {
             logger.error(e.getMessage());
