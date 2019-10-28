@@ -1,9 +1,14 @@
 package com.mkjw.second_project;
+import com.mkjw.second_project.domain.Notice;
+import com.mkjw.second_project.repository.NoticeRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
+
+import java.util.Date;
 
 @SpringBootApplication
 public class SecondProjectApplication {
@@ -22,6 +27,20 @@ public class SecondProjectApplication {
         loggingFilter.setAfterMessageSuffix("");
 
         return loggingFilter;
+    }
+
+    @Bean
+    public CommandLineRunner generateNoticeData(NoticeRepository noticeRepository) {
+        return args -> {
+            for (int i = 0; i < 10; i++) {
+                Notice notice = new Notice();
+                notice.setTitle("Title " + (i + 1));
+                notice.setContent("Content " + (i + 1));
+                notice.setCreatedDate(new Date());
+
+                noticeRepository.save(notice);
+            }
+        };
     }
 
     public static void main(String[] args) {
