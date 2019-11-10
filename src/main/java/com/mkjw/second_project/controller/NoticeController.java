@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -27,6 +29,11 @@ public class NoticeController {
     @RequestMapping(value = "/notices/{id}", method = RequestMethod.GET)
     public Notice notice(@PathVariable("id") long id) {
         return noticeRepository.findById(id).orElse(null);
+    }
+
+    @RequestMapping(value = "/notices/{userId}", method = RequestMethod.GET)
+    public Collection<Notice> userNotices(@PathVariable("userId") String userId) {
+        return Collections.emptyList();
     }
 
     @RequestMapping(value = "/notices", method = RequestMethod.POST)

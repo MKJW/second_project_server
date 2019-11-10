@@ -18,5 +18,8 @@ public class Notice {
 
     private String content;
 
+    //TODO 카테고리 enum 값으로 특정 값으로 한정하기
+    private String category;
+
     private Date createdDate;
 }

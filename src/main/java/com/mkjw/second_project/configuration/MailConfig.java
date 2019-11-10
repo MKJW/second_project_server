@@ -11,18 +11,16 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:email.properties")
 public class MailConfig {
 
     private static final String MAIL_DEBUG = "mail.debug";
-    private static final String MAIL_SMTP_STARTTLS_REQUIRED = "mail.smtp.starttls.required";
-    private static final String MAIL_SMTP_AUTH = "mail.smtp.auth";
-    private static final String MAIL_SMTP_STARTTLS_ENABLE = "mail.smtp.starttls.enable";
-    private static final String HOST = "host";
-    private static final String PROTOCOL = "protocol";
-    private static final String PORT = "port";
-    private static final String USERNAME = "username";
-    private static final String PASSWORD = "password";
+    private static final String MAIL_SMTP_AUTH = "spring.mail.properties.mail.smtps.auth";
+    private static final String MAIL_SMTP_STARTTLS_ENABLE = "spring.mail.properties.mail.smtps.starttls.enable";
+    private static final String HOST = "spring.mail.host";
+    private static final String PROTOCOL = "spring.mail.protocol";
+    private static final String PORT = "spring.mail.port";
+    private static final String USERNAME = "spring.mail.username";
+    private static final String PASSWORD = "spring.mail.password";
     private static final String DEFAULT_ENCODING = "defaultEncoding";
 
     @Autowired
@@ -39,9 +37,8 @@ public class MailConfig {
         mailSender.setDefaultEncoding(env.getProperty(DEFAULT_ENCODING));
 
         Properties properties = mailSender.getJavaMailProperties();
-        properties.put(MAIL_SMTP_STARTTLS_REQUIRED, env.getProperty(MAIL_SMTP_STARTTLS_REQUIRED));
-        properties.put(MAIL_SMTP_STARTTLS_ENABLE, env.getProperty(MAIL_SMTP_STARTTLS_ENABLE));
-        properties.put(MAIL_SMTP_AUTH, env.getProperty(MAIL_SMTP_AUTH));
+        properties.put("mail.smtps.starttls.enable", env.getProperty(MAIL_SMTP_STARTTLS_ENABLE));
+        properties.put("mail.smtps.auth", env.getProperty(MAIL_SMTP_AUTH));
         properties.put(MAIL_DEBUG, true);
         mailSender.setJavaMailProperties(properties);
 

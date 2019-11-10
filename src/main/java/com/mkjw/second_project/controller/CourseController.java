@@ -1,6 +1,8 @@
 package com.mkjw.second_project.controller;
 
 import com.mkjw.second_project.domain.*;
+import com.mkjw.second_project.repository.CourseRepository;
+import com.mkjw.second_project.repository.TakeRelationshipRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
