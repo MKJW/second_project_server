@@ -37,6 +37,7 @@ public class SecondProjectApplication {
                 notice.setTitle("Title " + (i + 1));
                 notice.setContent("Content " + (i + 1));
                 notice.setCreatedDate(new Date());
+                notice.setCourseId("INHA-001");
 
                 noticeRepository.save(notice);
             }

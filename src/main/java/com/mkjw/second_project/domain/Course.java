@@ -16,4 +16,7 @@ public class Course {
     private String school_id;
 
     private String grade;
+
+    //TODO 몇 년도 (몇 학기?) 에 속한 수업인지를 저장해야 한다. 어떤 형식으로 저장하는 것이 좋을까
+    private String year;
 }

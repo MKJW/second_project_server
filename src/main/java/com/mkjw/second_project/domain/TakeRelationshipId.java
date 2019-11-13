@@ -5,6 +5,10 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Objects;
 
+/*
+TakeRelationShip 은 두 개의 쌍으로 이루어진 키를 사용한다.
+따라서 키로 사용할 클래스를 새롭게
+ */
 @NoArgsConstructor
 public class TakeRelationshipId implements Serializable {
 

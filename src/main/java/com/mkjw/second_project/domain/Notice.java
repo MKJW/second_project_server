@@ -22,4 +22,10 @@ public class Notice {
     private String category;
 
     private Date createdDate;
+
+    private Date modifiedDate;
+
+    //어떤 수업에 속하는지
+    //@TODO Course 클래스의 id 와 매핑관계를 정의해야 한다.
+    private String courseId;
 }
