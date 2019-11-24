@@ -36,3 +36,9 @@ out/
 .DS_Store?
 
 application-local.properties
+
+### firebase admin key ###
+src/main/resources/firebase/
+
+### local properties ###
+local.properties

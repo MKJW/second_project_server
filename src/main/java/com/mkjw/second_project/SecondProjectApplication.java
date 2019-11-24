@@ -39,6 +39,15 @@ public class SecondProjectApplication {
                 notice.setCreatedDate(new Date());
                 notice.setCourseId("INHA-001");
 
+                //TODO below code is temporary for test and should be removed later
+                if (i < 3) {
+                    notice.setCategory("국어");
+                } else if (i < 6) {
+                    notice.setCategory("수학");
+                } else {
+                    notice.setCategory("영어");
+                }
+
                 noticeRepository.save(notice);
             }
         };
