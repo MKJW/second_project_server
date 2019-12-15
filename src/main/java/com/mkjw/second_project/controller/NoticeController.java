@@ -1,7 +1,7 @@
 package com.mkjw.second_project.controller;
 
 import com.mkjw.second_project.domain.Notice;
-import com.mkjw.second_project.service.NoticeService;
+import com.mkjw.second_project.service.NoticeServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class NoticeController {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private NoticeService noticeService;
+    private NoticeServiceImpl noticeService;
 
     //학생이 속한 모든 수업의 게시글을 반환한다.
     @RequestMapping(value = "/notices/{studentId}", method = RequestMethod.GET)
