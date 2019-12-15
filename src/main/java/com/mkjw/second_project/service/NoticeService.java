@@ -1,6 +1,6 @@
 package com.mkjw.second_project.service;
 
-import com.mkjw.second_project.domain.Notice;
+import com.mkjw.second_project.entity.Notice;
 
 import java.util.List;
 

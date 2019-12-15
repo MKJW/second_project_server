@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/user/registration", "/courses/**", "/h2-console/**")
+                .antMatchers("/dto/registration", "/courses/**", "/h2-console/**")
                 .permitAll()
                 .and()
             .formLogin()
@@ -53,10 +53,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .headers()
                 .frameOptions().disable();
 
+        //TODO 몇몇 API 에 대해서 인증 추가 필요 (현재는 없음)
     }
 
     @Bean
     public DaoAuthenticationProvider authProvider() {
+        // TODO custom AuthenticationProvider 사용중
         final CustomAuthenticationProvider authProvider = new CustomAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(encoder());

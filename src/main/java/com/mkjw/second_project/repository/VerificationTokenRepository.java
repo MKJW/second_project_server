@@ -1,6 +1,7 @@
-package com.mkjw.second_project.persistence;
+package com.mkjw.second_project.repository;
 
-import com.mkjw.second_project.token.VerificationToken;
+import com.mkjw.second_project.entity.User;
+import com.mkjw.second_project.entity.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VerificationTokenRepository extends JpaRepository<VerificationToken, Long> {

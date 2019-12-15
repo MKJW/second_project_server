@@ -1,10 +1,9 @@
-package com.mkjw.second_project.domain;
+package com.mkjw.second_project.entity;
 
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.List;
 
 @Data
 @Entity

@@ -1,6 +1,6 @@
 package com.mkjw.second_project.service;
 
-import com.mkjw.second_project.domain.Student;
+import com.mkjw.second_project.entity.Student;
 import com.mkjw.second_project.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.mkjw.second_project.validator;
 
 import com.mkjw.second_project.annotation.PasswordMatches;
-import com.mkjw.second_project.user.UserDto;
+import com.mkjw.second_project.dto.UserDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

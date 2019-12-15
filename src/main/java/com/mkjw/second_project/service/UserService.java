@@ -1,10 +1,11 @@
-package com.mkjw.second_project.user;
+package com.mkjw.second_project.service;
 
 import com.mkjw.second_project.exception.UserAlreadyExistException;
-import com.mkjw.second_project.persistence.User;
-import com.mkjw.second_project.persistence.UserRepository;
-import com.mkjw.second_project.persistence.VerificationTokenRepository;
-import com.mkjw.second_project.token.VerificationToken;
+import com.mkjw.second_project.entity.User;
+import com.mkjw.second_project.repository.UserRepository;
+import com.mkjw.second_project.repository.VerificationTokenRepository;
+import com.mkjw.second_project.entity.VerificationToken;
+import com.mkjw.second_project.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

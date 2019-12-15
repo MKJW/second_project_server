@@ -1,7 +1,7 @@
 package com.mkjw.second_project.service;
 
-import com.mkjw.second_project.domain.Course;
-import com.mkjw.second_project.domain.Notice;
+import com.mkjw.second_project.entity.Course;
+import com.mkjw.second_project.entity.Notice;
 import com.mkjw.second_project.repository.CourseRepository;
 import com.mkjw.second_project.repository.NoticeRepository;
 import com.mkjw.second_project.repository.TakeRelationshipRepository;

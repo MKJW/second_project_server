@@ -1,6 +1,6 @@
 package com.mkjw.second_project.controller;
 
-import com.mkjw.second_project.domain.Notice;
+import com.mkjw.second_project.entity.Notice;
 import com.mkjw.second_project.service.NoticeServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

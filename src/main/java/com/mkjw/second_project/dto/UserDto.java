@@ -1,4 +1,4 @@
-package com.mkjw.second_project.user;
+package com.mkjw.second_project.dto;
 
 import com.mkjw.second_project.annotation.PasswordMatches;
 import com.mkjw.second_project.annotation.ValidEmail;

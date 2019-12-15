@@ -1,5 +1,5 @@
 package com.mkjw.second_project;
-import com.mkjw.second_project.domain.Notice;
+import com.mkjw.second_project.entity.Notice;
 import com.mkjw.second_project.repository.NoticeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,10 +1,10 @@
 package com.mkjw.second_project.controller;
 
 import com.mkjw.second_project.registration.OnRegistrationCompleteEvent;
-import com.mkjw.second_project.token.VerificationToken;
-import com.mkjw.second_project.user.IUserService;
-import com.mkjw.second_project.persistence.User;
-import com.mkjw.second_project.user.UserDto;
+import com.mkjw.second_project.entity.VerificationToken;
+import com.mkjw.second_project.service.IUserService;
+import com.mkjw.second_project.entity.User;
+import com.mkjw.second_project.dto.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +54,7 @@ public class RegistrationController {
             return new ModelAndView("registration", "user", userDto);
         }
 
-        LOGGER.debug("Registering user account with information: {}", userDto);
+        LOGGER.debug("Registering dto account with information: {}", userDto);
 
         final User registered = userService.registerNewUserAccount(userDto);
 
@@ -66,7 +66,7 @@ public class RegistrationController {
             String appUrl = request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
         } catch (final Exception e) {
-            return new ModelAndView("emailError", "user", userDto);
+            return new ModelAndView("emailError", "dto", userDto);
         }
 
         return new ModelAndView("successRegister", "user", userDto);

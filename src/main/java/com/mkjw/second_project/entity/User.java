@@ -1,4 +1,4 @@
-package com.mkjw.second_project.persistence;
+package com.mkjw.second_project.entity;
 
 import lombok.Data;
 

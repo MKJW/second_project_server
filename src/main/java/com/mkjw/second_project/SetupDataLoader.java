@@ -1,8 +1,8 @@
 package com.mkjw.second_project;
 
-import com.mkjw.second_project.persistence.Role;
-import com.mkjw.second_project.persistence.User;
-import com.mkjw.second_project.persistence.UserRepository;
+import com.mkjw.second_project.entity.Role;
+import com.mkjw.second_project.entity.User;
+import com.mkjw.second_project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

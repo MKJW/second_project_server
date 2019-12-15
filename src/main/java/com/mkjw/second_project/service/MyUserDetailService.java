@@ -1,9 +1,9 @@
-package com.mkjw.second_project.security;
+package com.mkjw.second_project.service;
 
-import com.mkjw.second_project.persistence.Privilege;
-import com.mkjw.second_project.persistence.Role;
-import com.mkjw.second_project.persistence.User;
-import com.mkjw.second_project.persistence.UserRepository;
+import com.mkjw.second_project.entity.Privilege;
+import com.mkjw.second_project.entity.Role;
+import com.mkjw.second_project.entity.User;
+import com.mkjw.second_project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -42,7 +42,7 @@ public class MyUserDetailService implements UserDetailsService {
         User user = userRepository.findByEmail(email);
 
         if (user == null) {
-            throw new UsernameNotFoundException("No user found with username: " + email);
+            throw new UsernameNotFoundException("No dto found with username: " + email);
         }
 
         return new org.springframework.security.core.userdetails.User(

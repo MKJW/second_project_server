@@ -1,7 +1,7 @@
 package com.mkjw.second_project.security;
 
-import com.mkjw.second_project.persistence.User;
-import com.mkjw.second_project.persistence.UserRepository;
+import com.mkjw.second_project.entity.User;
+import com.mkjw.second_project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,6 +22,7 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
             throw new BadCredentialsException("Invalid username or password");
         }
 
+        // TODO 이 부분이 비밀번호 인증 또한 수행하는가? -> 그러니깐 비밀번호 틀리면 진행이 안되나..
         final Authentication result = super.authenticate(authentication);
         return new UsernamePasswordAuthenticationToken(user, result.getCredentials(), result.getAuthorities());
     }

@@ -1,6 +1,6 @@
-package com.mkjw.second_project.token;
+package com.mkjw.second_project.entity;
 
-import com.mkjw.second_project.persistence.User;
+import com.mkjw.second_project.entity.User;
 import lombok.Data;
 
 import javax.persistence.*;

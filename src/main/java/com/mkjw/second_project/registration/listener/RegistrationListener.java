@@ -1,8 +1,8 @@
 package com.mkjw.second_project.registration.listener;
 
-import com.mkjw.second_project.persistence.User;
+import com.mkjw.second_project.entity.User;
 import com.mkjw.second_project.registration.OnRegistrationCompleteEvent;
-import com.mkjw.second_project.user.IUserService;
+import com.mkjw.second_project.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;

@@ -1,13 +1,12 @@
 package com.mkjw.second_project.repository;
 
-import com.mkjw.second_project.domain.TakeRelationship;
-import com.mkjw.second_project.domain.TakeRelationshipId;
+import com.mkjw.second_project.entity.TakeRelationship;
+import com.mkjw.second_project.entity.TakeRelationshipId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface TakeRelationshipRepository extends JpaRepository<TakeRelationship, TakeRelationshipId> {
 

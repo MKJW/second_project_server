@@ -1,6 +1,6 @@
 package com.mkjw.second_project.registration;
 
-import com.mkjw.second_project.persistence.User;
+import com.mkjw.second_project.entity.User;
 import lombok.Data;
 import org.springframework.context.ApplicationEvent;
 

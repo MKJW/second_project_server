@@ -1,8 +1,9 @@
-package com.mkjw.second_project.user;
+package com.mkjw.second_project.service;
 
 import com.mkjw.second_project.exception.UserAlreadyExistException;
-import com.mkjw.second_project.persistence.User;
-import com.mkjw.second_project.token.VerificationToken;
+import com.mkjw.second_project.entity.User;
+import com.mkjw.second_project.entity.VerificationToken;
+import com.mkjw.second_project.dto.UserDto;
 
 public interface IUserService {
     User registerNewUserAccount(UserDto accountDto) throws UserAlreadyExistException;

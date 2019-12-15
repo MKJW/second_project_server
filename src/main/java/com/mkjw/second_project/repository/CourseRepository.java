@@ -1,6 +1,6 @@
 package com.mkjw.second_project.repository;
 
-import com.mkjw.second_project.domain.Course;
+import com.mkjw.second_project.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,17 +1,12 @@
 package com.mkjw.second_project;
 
-import com.mkjw.second_project.persistence.User;
-import com.mkjw.second_project.persistence.UserRepository;
-import org.hamcrest.core.Is;
+import com.mkjw.second_project.repository.UserRepository;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,9 +34,9 @@ public class UserRepositoryTest {
 
         List<User> users = userRepository.findAll();
 
-        User user = users.get(0);
+        User dto = users.get(0);
 
-        Assert.assertThat(user.getUser_id(), Is.is("qwebnm7788"));
-        Assert.assertThat(user.getType(), Is.is("STUDENT"));*/
+        Assert.assertThat(dto.getUser_id(), Is.is("qwebnm7788"));
+        Assert.assertThat(dto.getType(), Is.is("STUDENT"));*/
     }
 }
